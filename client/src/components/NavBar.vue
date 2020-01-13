@@ -57,11 +57,11 @@ export default {
 header {
   top: 0;
   z-index: 10;
-  padding-top: 10px;
+  padding: 10px 0;
   width: 100%;
   position: fixed;
   display: block;
-  background-color: rgb(83, 45, 157, 0.2);
+  background-color: rgb(83, 45, 157, 0);
   transition: background-color 600ms linear;
 }
 
@@ -72,7 +72,7 @@ header {
 .navbar {
   overflow: hidden;
   margin: 0 20%;
-  border-bottom: 1px #333 solid;
+  border-bottom: 1px white solid;
   transition: 0.4s;
   display: flex;
   justify-content: space-around;
@@ -81,7 +81,7 @@ header {
 .navbar a {
   float: left;
   font-size: 16px;
-  color: black;
+  color: #F5F5F5;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -96,9 +96,9 @@ header {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: black;
+  color: #532d9d;
   padding: 14px 16px;
-  background-color: inherit;
+  background-color: #532d9d;
   font-family: inherit;
   margin: 0;
 }
@@ -118,7 +118,7 @@ header {
 
 .dropdown-content a {
   float: none;
-  color: black;
+  color: #2c3e50;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -132,6 +132,8 @@ header {
 .dropdown:hover .dropdown-content {
   display: block;
   margin-top: 50px;
+  background-color: white;
+  color: #532d9d;
 }
 
 .scrolldown {
@@ -139,6 +141,6 @@ header {
 }
 
 .backtotop {
-  background-color: rgb(83, 45, 157, .9);
+  background-color: rgb(83, 45, 157, 1);
 }
 </style>

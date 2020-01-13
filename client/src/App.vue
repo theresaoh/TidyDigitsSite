@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
+    <ContactForm></ContactForm>
     <span class="img"></span>
     <router-view></router-view>
   </div>
@@ -10,13 +11,15 @@ import NavBar from './components/NavBar.vue'
 import Home from './components/Home.vue'
 import Technology from './components/Technology.vue'
 import Products from './components/Products.vue'
+import ContactForm from './components/ContactForm.vue'
 export default {
   name: 'app',
   components: {
     NavBar,
     Home,
     Technology,
-    Products
+    Products,
+    ContactForm
   }
 }
 </script>
@@ -33,6 +36,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 .img {
   display: block;
@@ -43,7 +49,9 @@ export default {
   background-repeat: no-repeat;
   background-size: 100vw 100vh
 }
+
 .component {
   margin: 0 20%;
 }
+
 </style>
