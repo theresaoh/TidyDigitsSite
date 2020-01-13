@@ -18,7 +18,39 @@
 
 export default {
   name: 'NavBar',
-}
+  data() {
+    return {
+      lastScrollPosition: 0
+      }
+    },
+    methods: {
+      onScroll () {
+        const header = document.getElementById('header');
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScrollPosition >= 170) {
+          let classList = header.classList;
+          while (classList.length > 0) {
+            classList.remove(classList.item(0));
+          }
+        header.classList.add('backtotop');
+        }
+        if (currentScrollPosition < 170) {
+          let classList = header.classList;
+          while (classList.length > 0) {
+            classList.remove(classList.item(0));
+          }
+          header.classList.add('scrolldown');
+          }
+        this.lastScrollPosition = currentScrollPosition
+        }
+      },
+    mounted() {
+      window.addEventListener('scroll', this.onScroll)
+    },
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.onScroll)
+    }
+  }
 </script>
 
 <style>
@@ -29,7 +61,8 @@ header {
   width: 100%;
   position: fixed;
   display: block;
-  background-color: rgb(224,224,224, 0.2);
+  background-color: rgb(83, 45, 157, 0.2);
+  transition: background-color 600ms linear;
 }
 
 #logo {
@@ -71,7 +104,7 @@ header {
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: gray;
+  background-color: #532d9d;
 }
 
 .dropdown-content {
@@ -93,11 +126,19 @@ header {
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #532d9d;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
   margin-top: 50px;
+}
+
+.scrolldown {
+  background-color: rgb(83, 45, 157, 0.2);
+}
+
+.backtotop {
+  background-color: rgb(83, 45, 157, .9);
 }
 </style>
