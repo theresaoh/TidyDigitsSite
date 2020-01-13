@@ -26,20 +26,23 @@ export default {
     methods: {
       onScroll () {
         const header = document.getElementById('header');
+        const logo = document.getElementById('logo');
         const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         if (currentScrollPosition >= 170) {
           let classList = header.classList;
           while (classList.length > 0) {
             classList.remove(classList.item(0));
           }
+        logo.style.transform = "scale(0.5)";
         header.classList.add('backtotop');
         }
-        if (currentScrollPosition < 170) {
+        if (currentScrollPosition <= 171) {
           let classList = header.classList;
           while (classList.length > 0) {
             classList.remove(classList.item(0));
           }
-          header.classList.add('scrolldown');
+        logo.style.transform = "scale(1.0)";
+        header.classList.add('scrolldown');
           }
         this.lastScrollPosition = currentScrollPosition
         }
