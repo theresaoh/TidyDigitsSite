@@ -47,7 +47,8 @@ export default {
   height: 100vh;
   background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/57/70/gKDlOv.jpg");
   background-repeat: no-repeat;
-  background-size: 100vw 100vh
+  background-size: cover;
+  background-position: center;
 }
 
 .component {

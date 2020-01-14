@@ -23,10 +23,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .button-container {
-  width: 100%;
-  height: 100%;
   position: absolute;
-  display: flex;
+  right: 0;
+  top: 50%;
 }
 
 .contactButton {
@@ -41,7 +40,7 @@ export default {
   position: fixed;
   z-index: 100;
   transform: rotate(90deg);
-  right: 0;
+  right: -45px;
   align-self: center;
   opacity: 0.7;
 }

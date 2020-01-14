@@ -33,7 +33,7 @@ export default {
           while (classList.length > 0) {
             classList.remove(classList.item(0));
           }
-        logo.style.transform = "scale(0.5)";
+        // logo.style.transform = "scale(0.5)";
         header.classList.add('backtotop');
         }
         if (currentScrollPosition <= 171) {
@@ -41,7 +41,7 @@ export default {
           while (classList.length > 0) {
             classList.remove(classList.item(0));
           }
-        logo.style.transform = "scale(1.0)";
+        // logo.style.transform = "scale(1.0)";
         header.classList.add('scrolldown');
           }
         this.lastScrollPosition = currentScrollPosition
@@ -140,7 +140,7 @@ header {
 }
 
 .scrolldown {
-  background-color: rgb(83, 45, 157, 0.2);
+  background-color: rgb(83, 45, 157, 0);
 }
 
 .backtotop {
