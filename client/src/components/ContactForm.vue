@@ -10,22 +10,23 @@
           <p class="label">Name:</p>
           <div class="info-container">
             <span>
-              <input v-model="firstName" type="text" @keyup.enter="checkValidity()"/>
+              <input v-model="firstName" ref="firstNameInput" type="text" @keyup.enter="checkValidity()"/>
               <p class="sub-label">First</p>
             </span>
             <span>
-              <input v-model="lastName" type="text" @keyup.enter="checkValidity()"/>
+              <input v-model="lastName" ref="lastNameInput" type="text" @keyup.enter="checkValidity()"/>
               <p class="sub-label">Last</p>
             </span>
           </div>
           <p class="label">Contact Info:</p>
           <div class="info-container">
             <span>
-              <input v-model="email" type="email" @keyup.enter="checkValidity()"/>
+              <input v-model="email" ref="emailInput" type="email" @keyup.enter="checkValidity()"/>
               <p class="sub-label">Email</p>
+              <p class="sub-label error-message" ref="emailError">Invalid email</p>
             </span>
             <span>
-              <input v-model="phone" type="text" @keyup.enter="checkValidity()"/>
+              <input v-model="phone" ref="phoneInput" type="text" @keyup.enter="checkValidity()"/>
               <p class="sub-label">Phone</p>
             </span>
           </div>
@@ -53,6 +54,22 @@ export default {
     }
   },
   methods:{
+    checkValidity(){
+      var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+      if (!re.test(String(this.email).toLowerCase())){
+        this.$refs.emailInput.classList.add("input-error");
+        this.$refs.emailError.style.display = "block";
+      }
+      if (!this.firstName){
+        this.$refs.firstNameInput.classList.add("input-error");
+      }
+      if (!this.lastName){
+        this.$refs.lastNameInput.classList.add("input-error");
+      }
+      if (!this.phone){
+        this.$refs.phoneInput.classList.add("input-error");
+      }
+    },
     submitContact() {
       console.log("contact form submitted");
     }
@@ -82,6 +99,15 @@ export default {
   justify-content: space-between;
   flex-direction: row;
   margin: 15px 0;
+}
+
+.input-error {
+  border: 1px solid #790000;
+}
+
+.error-message {
+  color: #790000;
+  display: none;
 }
 
 textarea {
@@ -136,7 +162,7 @@ a {
 }
 
 .modal {
-  display: none; /* Hidden by default */
+  display: flex; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
   left: 0;
