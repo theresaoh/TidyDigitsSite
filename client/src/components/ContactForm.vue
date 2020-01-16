@@ -11,28 +11,29 @@
           <div class="info-container">
             <span>
               <input v-model="firstName" ref="firstNameInput" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">First</p>
+              <p class="sub-label">First *</p>
             </span>
             <span>
               <input v-model="lastName" ref="lastNameInput" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Last</p>
+              <p class="sub-label">Last *</p>
             </span>
           </div>
           <p class="label">Contact Info:</p>
           <div class="info-container">
             <span>
               <input v-model="email" ref="emailInput" type="email" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Email</p>
+              <p class="sub-label">Email *</p>
               <p class="sub-label error-message" ref="emailError">Invalid email</p>
             </span>
             <span>
-              <input v-model="phone" ref="phoneInput" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Phone</p>
+              <input v-model="phone" ref="phoneInput" type="tel" @keyup.enter="checkValidity()"/>
+              <p class="sub-label">Phone *</p>
+              <p class="sub-label error-message" ref="phoneError">Invalid phone number</p>
             </span>
           </div>
           <div class="message-container">
             <p class="label">Message:</p>
-            <textarea></textarea>
+            <textarea v-model="message" ref="message"></textarea>
           </div>
           <button @click="checkValidity()">SUBMIT</button>
         </div>
@@ -50,28 +51,54 @@ export default {
       lastName: '',
       email: '',
       phone: '',
-      textBody: ''
+      message: ''
     }
   },
   methods:{
     checkValidity(){
+      this.validatePhone();
+      if (this.validateEmail() && this.validateName() && this.validatePhone() && this.checkMessage()){
+        this.submitContact();        
+      }
+    },
+    submitContact() {
+      
+    },
+    validateEmail(){
       var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
       if (!re.test(String(this.email).toLowerCase())){
         this.$refs.emailInput.classList.add("input-error");
         this.$refs.emailError.style.display = "block";
+        return false;
       }
+      this.$refs.emailError.style.display = "none";
+      return true;
+    },
+    validateName(){
       if (!this.firstName){
         this.$refs.firstNameInput.classList.add("input-error");
+        return false;
       }
       if (!this.lastName){
         this.$refs.lastNameInput.classList.add("input-error");
+        return false;
       }
+      return true;
+    },
+    validatePhone(){
+      // this isn't properly validating phone numbers at all yet
       if (!this.phone){
         this.$refs.phoneInput.classList.add("input-error");
+        return false;
       }
+      return true;
     },
-    submitContact() {
-      console.log("contact form submitted");
+    checkMessage() {
+      if (!this.message){
+        this.$refs.message.classList.add("input-error");
+        return false;
+      }
+      return true;
     }
   }
 }
