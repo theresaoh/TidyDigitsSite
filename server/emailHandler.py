@@ -1,5 +1,8 @@
+from flask import Blueprint
 import smtplib, ssl
 import os
+
+email_handler = Blueprint('email_handler', __name__)
 
 port = 465  # For SSL
 password = os.environ["EMAIL_PASSWORD"]
