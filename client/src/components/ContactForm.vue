@@ -5,8 +5,8 @@
     </div>
     <div class="modal" ref="modal">
       <div class="modal-content" ref="modalContent">
+        <div @click="$refs.modal.style.display='none'" class="close">&times;</div>
         <div class="modal-body">
-          <span @click="$refs.modal.style.display='none'" class="close">&times;</span>
           <p class="label">Name:</p>
           <div class="info-container">
             <span>
@@ -109,6 +109,8 @@ export default {
 .label {
   text-align: left;
   font-weight: bold;
+  clear: right;
+  display: block;
 }
 
 .sub-label {
@@ -215,7 +217,8 @@ a {
   width: 40%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatedown;
-  animation-duration: 0.5s
+  animation-duration: 0.5s;
+  flex-direction: column;
 }
 
 /* The Close Button */
@@ -224,6 +227,7 @@ a {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  align-self: flex-end;
 }
 
 .close:hover,
