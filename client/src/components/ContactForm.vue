@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'ContactForm',
   data(){
@@ -62,7 +64,10 @@ export default {
       }
     },
     submitContact() {
-      
+      axios.get("/email_handler")
+      .then((data) => {
+          
+      })
     },
     validateEmail(){
       var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
