@@ -64,9 +64,9 @@ export default {
       }
     },
     submitContact() {
-      axios.get("/email_handler")
+      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, phone: this.phone, message: this.message})
       .then((data) => {
-          
+        console.log("form submitted")  
       })
     },
     validateEmail(){
