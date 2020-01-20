@@ -5,8 +5,8 @@
     </div>
     <div class="modal" ref="modal">
       <div class="modal-content" ref="modalContent">
-        <div @click="$refs.modal.style.display='none'" class="close">&times;</div>
-        <div class="modal-body">
+        <div @click="closeModal()" class="close">&times;</div>
+        <div v-if="formSubmittedSuccess === false" class="modal-body">
           <p class="label">Name:</p>
           <div class="info-container">
             <span>
@@ -32,6 +32,9 @@
           </div>
           <button @click="checkValidity()">SUBMIT</button>
         </div>
+        <div v-if="formSubmittedSuccess === true">
+        <h1>Your form has been submitted successfully!</h1>
+        </div>
       </div>
     </div>
   </div>
@@ -47,7 +50,8 @@ export default {
       firstName: '',
       lastName: '',
       email: '',
-      message: ''
+      message: '',
+      formSubmittedSuccess: false
     }
   },
   methods:{
@@ -60,9 +64,15 @@ export default {
       }
     },
     submitContact() {
-      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, message: this.messageInput})
-      .then((data) => {
-        console.log("form submitted")  
+      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, message: this.message})
+      .then((resp) => {
+        if (resp.data.success === true){
+          this.formSubmittedSuccess = true;
+          this.firstName = "";
+          this.lastName = "";
+          this.email = "";
+          this.message = "";
+        };
       })
     },
     validateEmail(){
@@ -85,6 +95,10 @@ export default {
         return false;
       }
     },
+    closeModal(){
+      this.$refs.modal.style.display='none';
+      this.formSubmittedSuccess = false;
+    }
   }
 }
 </script>
