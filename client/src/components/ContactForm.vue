@@ -5,33 +5,35 @@
     </div>
     <div class="modal" ref="modal">
       <div class="modal-content" ref="modalContent">
+        <div @click="$refs.modal.style.display='none'" class="close">&times;</div>
         <div class="modal-body">
-          <span @click="$refs.modal.style.display='none'" class="close">&times;</span>
           <p class="label">Name:</p>
           <div class="info-container">
             <span>
-              <input v-model="firstName" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">First</p>
+              <input v-model="firstName" ref="firstNameInput" type="text" @keyup.enter="checkValidity()"/>
+              <p class="sub-label">First *</p>
             </span>
             <span>
-              <input v-model="lastName" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Last</p>
+              <input v-model="lastName" ref="lastNameInput" type="text" @keyup.enter="checkValidity()"/>
+              <p class="sub-label">Last *</p>
             </span>
           </div>
           <p class="label">Contact Info:</p>
           <div class="info-container">
             <span>
-              <input v-model="email" type="email" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Email</p>
+              <input v-model="email" ref="emailInput" type="email" @keyup.enter="checkValidity()"/>
+              <p class="sub-label">Email *</p>
+              <p class="sub-label error-message" ref="emailError">Invalid email</p>
             </span>
             <span>
-              <input v-model="phone" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Phone</p>
+              <input v-model="phone" ref="phoneInput" type="tel" @keyup.enter="checkValidity()"/>
+              <p class="sub-label">Phone *</p>
+              <p class="sub-label error-message" ref="phoneError">Invalid phone number</p>
             </span>
           </div>
           <div class="message-container">
             <p class="label">Message:</p>
-            <textarea></textarea>
+            <textarea v-model="message" ref="message"></textarea>
           </div>
           <button @click="checkValidity()">SUBMIT</button>
         </div>
@@ -41,6 +43,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'ContactForm',
   data(){
@@ -49,12 +53,57 @@ export default {
       lastName: '',
       email: '',
       phone: '',
-      textBody: ''
+      message: ''
     }
   },
   methods:{
+    checkValidity(){
+      this.validatePhone();
+      if (this.validateEmail() && this.validateName() && this.validatePhone() && this.checkMessage()){
+        this.submitContact();        
+      }
+    },
     submitContact() {
-      console.log("contact form submitted");
+      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, phone: this.phone, message: this.message})
+      .then((data) => {
+        console.log("form submitted")  
+      })
+    },
+    validateEmail(){
+      var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+      if (!re.test(String(this.email).toLowerCase())){
+        this.$refs.emailInput.classList.add("input-error");
+        this.$refs.emailError.style.display = "block";
+        return false;
+      }
+      this.$refs.emailError.style.display = "none";
+      return true;
+    },
+    validateName(){
+      if (!this.firstName){
+        this.$refs.firstNameInput.classList.add("input-error");
+        return false;
+      }
+      if (!this.lastName){
+        this.$refs.lastNameInput.classList.add("input-error");
+        return false;
+      }
+      return true;
+    },
+    validatePhone(){
+      // this isn't properly validating phone numbers at all yet
+      if (!this.phone){
+        this.$refs.phoneInput.classList.add("input-error");
+        return false;
+      }
+      return true;
+    },
+    checkMessage() {
+      if (!this.message){
+        this.$refs.message.classList.add("input-error");
+        return false;
+      }
+      return true;
     }
   }
 }
@@ -65,6 +114,8 @@ export default {
 .label {
   text-align: left;
   font-weight: bold;
+  clear: right;
+  display: block;
 }
 
 .sub-label {
@@ -82,6 +133,15 @@ export default {
   justify-content: space-between;
   flex-direction: row;
   margin: 15px 0;
+}
+
+.input-error {
+  border: 1px solid #790000;
+}
+
+.error-message {
+  color: #790000;
+  display: none;
 }
 
 textarea {
@@ -136,7 +196,7 @@ a {
 }
 
 .modal {
-  display: none; /* Hidden by default */
+  display: flex; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
   left: 0;
@@ -162,7 +222,8 @@ a {
   width: 40%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatedown;
-  animation-duration: 0.5s
+  animation-duration: 0.5s;
+  flex-direction: column;
 }
 
 /* The Close Button */
@@ -171,6 +232,7 @@ a {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  align-self: flex-end;
 }
 
 .close:hover,
