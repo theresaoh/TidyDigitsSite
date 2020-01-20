@@ -72,7 +72,7 @@ export default {
           this.lastName = "";
           this.email = "";
           this.message = "";
-        };
+        }
       })
     },
     validateEmail(){
