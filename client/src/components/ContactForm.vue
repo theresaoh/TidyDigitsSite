@@ -25,11 +25,6 @@
               <p class="sub-label">Email *</p>
               <p class="sub-label error-message" ref="emailError">Invalid email</p>
             </span>
-            <span>
-              <input v-model="phone" ref="phoneInput" type="tel" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Phone *</p>
-              <p class="sub-label error-message" ref="phoneError">Invalid phone number</p>
-            </span>
           </div>
           <div class="message-container">
             <p class="label">Message:</p>
@@ -52,19 +47,17 @@ export default {
       firstName: '',
       lastName: '',
       email: '',
-      phone: '',
       message: ''
     }
   },
   methods:{
     checkValidity(){
-      this.validatePhone();
-      if (this.validateEmail() && this.validateName() && this.validatePhone() && this.checkMessage()){
+      if (this.validateEmail() && this.validateName() && this.checkMessage()){
         this.submitContact();        
       }
     },
     submitContact() {
-      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, phone: this.phone, message: this.message})
+      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, message: this.message})
       .then((data) => {
         console.log("form submitted")  
       })
@@ -86,14 +79,6 @@ export default {
       }
       if (!this.lastName){
         this.$refs.lastNameInput.classList.add("input-error");
-        return false;
-      }
-      return true;
-    },
-    validatePhone(){
-      // this isn't properly validating phone numbers at all yet
-      if (!this.phone){
-        this.$refs.phoneInput.classList.add("input-error");
         return false;
       }
       return true;
