@@ -28,7 +28,7 @@
           </div>
           <div class="message-container">
             <p class="label">Message:</p>
-            <textarea v-model="message" ref="message"></textarea>
+            <textarea v-model="message" ref="messageInput"></textarea>
           </div>
           <button @click="checkValidity()">SUBMIT</button>
         </div>
@@ -52,12 +52,15 @@ export default {
   },
   methods:{
     checkValidity(){
-      if (this.validateEmail() && this.validateName() && this.checkMessage()){
+      this.inputIsEmpty(this.firstName, this.$refs.firstNameInput);
+      this.inputIsEmpty(this.lastName, this.$refs.lastNameInput);
+      this.inputIsEmpty(this.message, this.$refs.messageInput);
+      if (this.validateEmail() && !this.inputIsEmpty(this.firstName, this.$refs.firstNameInput) && !this.inputIsEmpty(this.lastName, this.$refs.lastNameInput) && !this.inputIsEmpty(this.message, this.$refs.messageInput)){
         this.submitContact();        
       }
     },
     submitContact() {
-      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, message: this.message})
+      axios.post("/send-email", { firstName: this.firstName, lastName: this.lastName, email: this.email, message: this.messageInput})
       .then((data) => {
         console.log("form submitted")  
       })
@@ -70,26 +73,18 @@ export default {
         return false;
       }
       this.$refs.emailError.style.display = "none";
+      this.$refs.emailInput.classList.remove("input-error");
       return true;
     },
-    validateName(){
-      if (!this.firstName){
-        this.$refs.firstNameInput.classList.add("input-error");
+    inputIsEmpty(inputValue, inputElement){
+      if (!inputValue){
+        inputElement.classList.add("input-error");
+        return true;
+      } else {
+        inputElement.classList.remove("input-error");
         return false;
       }
-      if (!this.lastName){
-        this.$refs.lastNameInput.classList.add("input-error");
-        return false;
-      }
-      return true;
     },
-    checkMessage() {
-      if (!this.message){
-        this.$refs.message.classList.add("input-error");
-        return false;
-      }
-      return true;
-    }
   }
 }
 </script>
@@ -121,7 +116,7 @@ export default {
 }
 
 .input-error {
-  border: 1px solid #790000;
+  border: 1px solid red;
 }
 
 .error-message {
