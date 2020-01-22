@@ -2,9 +2,9 @@
   <header id="header">
     <router-link to="/"><img id="logo" src="../../src/assets/logo.png"></router-link>
     <div class="navbar" id="navbar">
-      <span class="dropbtn"><router-link id="test"to="/">Home</router-link></span>
+      <span class="dropbtn"><router-link to="/">Home</router-link></span>
       <div class="dropdown">
-        <router-link id="test" to="/products">All Products &#x25BC;</router-link>
+        <router-link to="/products">All Products &#x25BC;</router-link>
         <div class="dropdown-content">
           <router-link to="/product1">Product 1</router-link>
           <router-link to="/product2">Product 2</router-link>
