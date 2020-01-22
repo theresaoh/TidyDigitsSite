@@ -156,7 +156,7 @@ button {
   outline: none;
   color: white;
   padding: 14px 16px;
-  background-color: #532d9d;
+  background-color: rgb(44, 62, 80);
   font-family: inherit;
 }
 

@@ -56,4 +56,10 @@ button:hover {
   opacity: 1;
 }
 
+.heading {
+  font-size: 50px;
+  letter-spacing: 3px;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  margin: 0 0 20px 0;
+}
 </style>

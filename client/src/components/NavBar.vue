@@ -99,21 +99,22 @@ header {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: #532d9d;
+  color: rgb(44, 62, 80);
   padding: 14px 16px;
-  background-color: #532d9d;
+  background-color: rgb(44, 62, 80);
   font-family: inherit;
   margin: 0;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: #532d9d;
+  background-color: rgb(44, 62, 80);
+  border-radius: 3px;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -121,7 +122,7 @@ header {
 
 .dropdown-content a {
   float: none;
-  color: #2c3e50;
+  color: rgb(44, 62, 80);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -129,21 +130,22 @@ header {
 }
 
 .dropdown-content a:hover {
-  background-color: #532d9d;
+  background-color: rgb(44, 62, 80);
+  color: white;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
   margin-top: 50px;
   background-color: white;
-  color: #532d9d;
+  color: rgb(44, 62, 80);
 }
 
 .scrolldown {
-  background-color: rgb(83, 45, 157, 0);
+  background-color: rgb(44, 62, 80, 0);
 }
 
 .backtotop {
-  background-color: rgb(83, 45, 157, 0.9);
+  background-color: rgb(44, 62, 80, 0.9);
 }
 </style>
