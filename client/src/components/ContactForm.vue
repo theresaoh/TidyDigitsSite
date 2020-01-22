@@ -11,11 +11,11 @@
           <div class="info-container">
             <span>
               <input v-model="firstName" ref="firstNameInput" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">First *</p>
+              <p class="sub-label">First</p>
             </span>
             <span>
               <input v-model="lastName" ref="lastNameInput" type="text" @keyup.enter="checkValidity()"/>
-              <p class="sub-label">Last *</p>
+              <p class="sub-label">Last</p>
             </span>
           </div>
           <p class="label">Contact Info:</p>
@@ -32,8 +32,8 @@
           </div>
           <button @click="checkValidity()">SUBMIT</button>
         </div>
-        <div v-if="formSubmittedSuccess === true">
-        <h1>Your form has been submitted successfully!</h1>
+        <div class="success" v-if="formSubmittedSuccess === true">
+        <p class="heading">Your form has been submitted successfully!</p>
         </div>
       </div>
     </div>
@@ -56,10 +56,8 @@ export default {
   },
   methods:{
     checkValidity(){
-      this.inputIsEmpty(this.firstName, this.$refs.firstNameInput);
-      this.inputIsEmpty(this.lastName, this.$refs.lastNameInput);
       this.inputIsEmpty(this.message, this.$refs.messageInput);
-      if (this.validateEmail() && !this.inputIsEmpty(this.firstName, this.$refs.firstNameInput) && !this.inputIsEmpty(this.lastName, this.$refs.lastNameInput) && !this.inputIsEmpty(this.message, this.$refs.messageInput)){
+      if (this.validateEmail() && !this.inputIsEmpty(this.message, this.$refs.messageInput)){
         this.submitContact();        
       }
     },
@@ -110,6 +108,10 @@ export default {
   font-weight: bold;
   clear: right;
   display: block;
+}
+
+.success {
+  padding: 15%;
 }
 
 .sub-label {
