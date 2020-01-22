@@ -2,9 +2,9 @@
   <header id="header">
     <router-link to="/"><img id="logo" src="../../src/assets/logo.png"></router-link>
     <div class="navbar" id="navbar">
-      <span class="dropbtn"><router-link to="/">Home</router-link></span>
+      <span class="dropbtn"><router-link id="test"to="/">Home</router-link></span>
       <div class="dropdown">
-        <router-link to="/products">All Products &#x25BC;</router-link>
+        <router-link id="test" to="/products">All Products &#x25BC;</router-link>
         <div class="dropdown-content">
           <router-link to="/product1">Product 1</router-link>
           <router-link to="/product2">Product 2</router-link>
@@ -71,7 +71,7 @@ header {
   width: 100%;
   position: fixed;
   display: block;
-  background-color: rgb(83, 45, 157, 0);
+  background-color: rgb(44, 62, 80, 0.2);
   transition: background-color 600ms linear;
 }
 
@@ -86,6 +86,7 @@ header {
   transition: 0.4s;
   display: flex;
   justify-content: space-around;
+  color: rgb(44, 62, 80);
 }
 
 .navbar a {
@@ -106,7 +107,6 @@ header {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: rgb(44, 62, 80);
   padding: 14px 16px;
   background-color: rgb(44, 62, 80);
   font-family: inherit;
@@ -149,7 +149,7 @@ header {
 }
 
 .scrolldown {
-  background-color: rgb(44, 62, 80, 0);
+  background-color: rgb(44, 62, 80, 0.2);
 }
 
 .backtotop {
