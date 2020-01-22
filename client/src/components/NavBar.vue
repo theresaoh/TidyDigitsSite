@@ -2,13 +2,20 @@
   <header id="header">
     <router-link to="/"><img id="logo" src="../../src/assets/logo.png"></router-link>
     <div class="navbar" id="navbar">
-      <span class="dropbtn"><router-link to="/products">Products</router-link></span>
+      <span class="dropbtn"><router-link to="/">Home</router-link></span>
       <div class="dropdown">
-        <router-link to="/technology">Technology &#x25BC;</router-link>
+        <router-link to="/products">All Products &#x25BC;</router-link>
         <div class="dropdown-content">
-          <a href="#">This does nothing</a>
-          <a href="#">Same here</a>
-          <a href="#">No links yet</a>
+          <router-link to="/product1">Product 1</router-link>
+          <router-link to="/product2">Product 2</router-link>
+          <router-link to="/product3">Product 3</router-link>
+          <router-link to="/product4">Product 4</router-link>
+          <router-link to="/product5">Product 5</router-link>
+          <router-link to="/product6">Product 6</router-link>
+          <router-link to="/product7">Product 7</router-link>
+          <router-link to="/product8">Product 8</router-link>
+          <router-link to="/product9">Product 9</router-link>
+          <router-link to="/product10">Product 10</router-link>
         </div>
       </div>
     </div>
