@@ -2,7 +2,6 @@
   <div id="app">
     <NavBar></NavBar>
     <ContactForm></ContactForm>
-    <span class="img"></span>
     <router-view></router-view>
   </div>
 </template>
@@ -40,19 +39,6 @@ export default {
   height: 100vh;
   position: relative;
 }
-.img {
-  display: block;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("https://img.wallpapersafari.com/desktop/1920/1080/57/70/gKDlOv.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
 
-.component {
-  margin: 0 20%;
-}
 
 </style>

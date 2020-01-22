@@ -190,7 +190,7 @@ a {
 }
 
 .modal {
-  display: flex; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
   left: 0;

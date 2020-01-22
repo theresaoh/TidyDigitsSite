@@ -144,6 +144,6 @@ header {
 }
 
 .backtotop {
-  background-color: rgb(83, 45, 157, 1);
+  background-color: rgb(83, 45, 157, 0.9);
 }
 </style>
