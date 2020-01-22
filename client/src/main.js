@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Products from './components/Products.vue'
-import Technology from './components/Technology.vue'
+import ProductOverview from './components/ProductOverview.vue'
 
 Vue.use(VueRouter)
 
@@ -11,10 +11,10 @@ const router = new VueRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/products", component: Products},
-    { path: "/technology", component: Technology},
+    { path: "/product-overview", component: ProductOverview},
     { path: "/product1", 
       component: Products, 
-    props: {productName: "PRODUCT 1", content: false} },
+    props: {productName: "Product 1", content: false} },
     { path: "/product2", 
       component: Products, 
     props: {productName: "Product 2", content: false} },

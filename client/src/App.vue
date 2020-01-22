@@ -8,7 +8,7 @@
 <script>
 import NavBar from './components/NavBar.vue'
 import Home from './components/Home.vue'
-import Technology from './components/Technology.vue'
+import ProductOverview from './components/ProductOverview.vue'
 import Products from './components/Products.vue'
 import ContactForm from './components/ContactForm.vue'
 export default {
@@ -16,7 +16,7 @@ export default {
   components: {
     NavBar,
     Home,
-    Technology,
+    ProductOverview,
     Products,
     ContactForm
   }
