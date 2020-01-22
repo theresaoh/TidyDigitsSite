@@ -4,6 +4,12 @@ import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Products from './components/Products.vue'
 import ProductOverview from './components/ProductOverview.vue'
+// import VueAnalytics from 'vue-analytics';
+
+// Vue.use(VueAnalytics, {
+//   id: "",
+//   router
+// });
 
 Vue.use(VueRouter)
 
