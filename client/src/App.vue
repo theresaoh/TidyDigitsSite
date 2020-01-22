@@ -40,5 +40,20 @@ export default {
   position: relative;
 }
 
+button {  
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: #532d9d;
+  opacity: 0.8;
+  font-family: inherit;
+  margin: 0;
+  }
+
+button:hover {
+  opacity: 1;
+}
 
 </style>
