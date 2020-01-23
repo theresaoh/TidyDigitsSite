@@ -10,12 +10,10 @@ def create_app():
   return app
 
 def add_vue_routes(app):
-  @app.route('/')
-  def serve_vue_app():
-    """
-    Serve our Vue app
-    """
-    return render_template('index.html')
+  @app.route('/', defaults={'path': ''})
+  @app.route('/<path:path>')
+  def catch_all(path):
+      return render_template("index.html")
 
   @app.after_request
   def add_header(req):
