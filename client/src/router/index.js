@@ -40,6 +40,10 @@ const routerOptions = [
     { path: "/product10", 
       component: 'Products', 
     props: {productName: "Product 10", content: false} },
+    {
+      path: '*',
+      component: 'NotFound',
+    }
   ];
 
 const routes = routerOptions.map(route => {
