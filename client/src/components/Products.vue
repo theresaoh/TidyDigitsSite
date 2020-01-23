@@ -49,6 +49,7 @@ export default {
 }
 
 .component {
+  min-height: 100vh;
   margin-bottom: 40px;
 }
 </style>
