@@ -3,16 +3,19 @@
     <NavBar></NavBar>
     <ContactForm></ContactForm>
     <router-view></router-view>
+    <Footer></Footer>
   </div>
 </template>
 <script>
 import NavBar from './components/NavBar.vue'
 import ContactForm from './components/ContactForm.vue'
+import Footer from './components/Footer.vue'
 export default {
   name: 'app',
   components: {
     NavBar,
-    ContactForm
+    ContactForm,
+    Footer
   }
 }
 </script>
