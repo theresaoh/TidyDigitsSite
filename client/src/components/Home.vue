@@ -2,7 +2,7 @@
   <div class="component">
     <span class="img">
       <div class="text-block">
-        <p class="heading">Weather and Climate Data Products</p>
+        <p class="text-block heading">Weather and Climate Data Products</p>
       </div>
     </span>
     <div class="home">
@@ -51,14 +51,14 @@ export default {
 }
 .text-block {
   z-index: 5;
-  border: 2px solid rgb(44, 62, 80);
+  border: 1.5px solid rgb(44, 62, 80);
   border-radius: 2px;
   background-color: rgb(125, 156, 151, 0.8);
   color: white;
   align-self: center;
 }
 
-.heading {
+.text-block .heading {
   font-size: 25px;
   padding: 20px;
   margin: 0;

@@ -10,7 +10,6 @@ import Router from 'vue-router'
 const routerOptions = [
     { path: "/", component: 'Home' },
     { path: "/products", component: 'Products'},
-    { path: "/product-overview", component: 'ProductOverview'},
     { path: "/product1", 
       component: 'Products', 
     props: {productName: "Product 1", content: false} },
