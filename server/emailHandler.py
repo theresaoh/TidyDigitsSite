@@ -20,10 +20,15 @@ def test_duplicate_user():
   email_to_user["Subject"] = "Thank You For Contacting TidyDigits!"
   email_to_user["From"] = sender_email
   email_to_user["To"] = receiver_email
+  print(first_name)
+  if first_name != '':
+    greeting = f"Hello {first_name}"
+  else:
+    greeting = "Hello There"
 
   # Create the plain-text and HTML version of your message
   email_to_user_plain_text = f"""
-    Hello {first_name},
+    {greeting},
     Thank you for contacting TidyDigits. We received your messsage and will be reaching out to you within 5-7 business days. 
     Message you submitted:
     {submitted_message}
@@ -43,7 +48,7 @@ def test_duplicate_user():
     </head>
       <body>
         <div class="container">
-          <h1>Hello {first_name},</h1><br>
+          <h1>{greeting},</h1><br>
           <p>Thank you for contacting TidyDigits. We received your messsage and will be reaching out to you within 5-7 business days.<br>
             Message you submitted:<br>
             {submitted_message}<br><br>
@@ -56,12 +61,12 @@ def test_duplicate_user():
   """
 
   email_to_admin = f"""\
-  Subject: New Submission
+    Subject: New Submission
 
-  First Name: {first_name}
-  Last Name: {last_name}
-  Email Address: {receiver_email}
-  Message: {submitted_message}
+    First Name: {first_name}
+    Last Name: {last_name}
+    Email Address: {receiver_email}
+    Message: {submitted_message}
   """
 
   # Turn these into plain/html MIMEText objects
