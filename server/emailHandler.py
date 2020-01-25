@@ -20,7 +20,6 @@ def test_duplicate_user():
   email_to_user["Subject"] = "Thank You For Contacting TidyDigits!"
   email_to_user["From"] = sender_email
   email_to_user["To"] = receiver_email
-  print(first_name)
   if first_name != '':
     greeting = f"Hello {first_name}"
   else:
