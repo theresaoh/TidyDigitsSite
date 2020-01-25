@@ -1,10 +1,13 @@
 <template>
   <v-footer absolute class="footer">
-    <div class="container">
-      <div class="site-map">
+    <div class="contact-container">
+      <div class="contact-info">
+        <a href=mailto:support@tidydigits.com target="_blank" rel="noopener noreferrer">support@tidydigits.com</a>
       </div>
-      <div class="copy">
-        <p class="copy-text">COPYRIGHT &copy; 2020 TidyDigits</p>
+      <div class="copy-container">
+        <div class="copy">
+          <p class="copy-text">COPYRIGHT &copy; 2020 TidyDigits</p>
+        </div>
       </div>
     </div>
   </v-footer>
@@ -18,6 +21,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+a {
+  color: white;
+}
 
 .footer {
   display: flex;
@@ -26,23 +32,21 @@ export default {
   height: 75px;
   bottom: 0;
   color: white;
-}
-.container {
-  padding: 20px 10% 20px 10%;
   flex-direction: column;
-  display: flex;
+  padding-bottom: 10px;
 }
-.site-map {
+.contact-container {
+  padding: 20px 10% 20px 10%;
+}
+.contact-info {
   height: 85%;
-  display: flex;
-  flex-direction: row;
-  align-content: space-around;
+  width: 100%;
 }
-.copy {
-  align-content: flex-end;
+.copy-container {
   display: flex;
   height: 25px;
   width: 100%;
   height: 15%;
+  justify-content: flex-start;
 }
 </style>
