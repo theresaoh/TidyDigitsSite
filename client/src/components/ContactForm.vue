@@ -30,7 +30,7 @@
             <p class="label">Message:</p>
             <textarea v-model="message" ref="messageInput"></textarea>
           </div>
-          <button @click="checkValidity()">SUBMIT</button>
+          <button :disabled="buttonDisabled" @click="checkValidity()">SUBMIT</button>
         </div>
         <div class="success" v-if="formSubmittedSuccess === true">
         <p class="heading">Your form has been submitted successfully!</p>
@@ -51,11 +51,13 @@ export default {
       lastName: '',
       email: '',
       message: '',
-      formSubmittedSuccess: false
+      formSubmittedSuccess: false,
+      buttonDisabled: false
     }
   },
   methods:{
     checkValidity(){
+      this.buttonDisabled = true;
       this.inputIsEmpty(this.message, this.$refs.messageInput);
       if (this.validateEmail() && !this.inputIsEmpty(this.message, this.$refs.messageInput)){
         this.submitContact();        
@@ -66,6 +68,7 @@ export default {
       .then((resp) => {
         if (resp.data.success === true){
           this.formSubmittedSuccess = true;
+          this.buttonDisabled = false;
           this.firstName = "";
           this.lastName = "";
           this.email = "";
@@ -78,6 +81,7 @@ export default {
       if (!re.test(String(this.email).toLowerCase())){
         this.$refs.emailInput.classList.add("input-error");
         this.$refs.emailError.style.display = "block";
+        this.buttonDisabled = false;
         return false;
       }
       this.$refs.emailError.style.display = "none";
@@ -160,6 +164,10 @@ button {
   padding: 14px 16px;
   background-color: rgb(44, 62, 80);
   font-family: inherit;
+}
+
+button:disabled {
+  background-color: grey;
 }
 
 .contactButton {
